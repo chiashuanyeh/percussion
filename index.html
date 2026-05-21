@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chia-Shuan (Charlize) Yeh — Percussionist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0e0e0e;
+      --white: #f5f4f0;
+      --gray-100: #e8e7e3;
+      --gray-200: #c8c7c2;
+      --gray-400: #8a8982;
+      --gray-600: #4a4945;
+      --accent: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 3rem;
+      background: rgba(245, 244, 240, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 0.5px solid var(--gray-200);
+    }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--black); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-image {
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      color: var(--gray-400);
+    }
+
+    .hero-image-placeholder svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--gray-400);
+    }
+
+    .placeholder-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 4rem 5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-name em {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--black);
+      margin: 2rem 0;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+      max-width: 340px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      margin-top: 3rem;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--black);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 0.5px;
+      background: var(--gray-200);
+    }
+
+    /* ── BIOGRAPHY ── */
+    #biography { background: var(--white); }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .bio-portrait {
+      aspect-ratio: 3/4;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 100px;
+    }
+
+    .bio-portrait-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    .bio-portrait-placeholder svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--gray-400);
+    }
+
+    .bio-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .bio-text p {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.85;
+    }
+
+    .bio-text p.placeholder-text {
+      border-radius: 2px;
+      color: var(--gray-400);
+      padding: 1rem 1.2rem;
+      border-left: 2px solid var(--gray-200);
+      font-style: italic;
+      font-size: 0.85rem;
+    }
+
+    .credentials {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 0.5px solid var(--gray-200);
+    }
+
+    .credentials-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1rem;
+    }
+
+    .credential-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.45rem 0;
+      border-bottom: 0.5px solid var(--gray-100);
+      font-size: 0.85rem;
+      color: var(--black);
+    }
+
+    .credential-item span {
+      color: var(--gray-400);
+      font-size: 0.78rem;
+    }
+
+    /* ── MEDIA ── */
+    #media { background: var(--gray-100); }
+
+    .media-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .media-card {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .media-video-placeholder {
+      aspect-ratio: 16/9;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .play-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: rgba(255,255,255,0.7);
+      margin-left: 3px;
+    }
+
+    .media-video-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* For embedded YouTube videos */
+    .media-video-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    .media-card-info {
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+
+    .media-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+      color: var(--black);
+    }
+
+    .media-card-meta {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── GALLERY SLIDER ── */
+    #gallery { background: var(--white); }
+
+    .gallery-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.8rem);
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+
+    .slider-wrap {
+      position: relative;
+      user-select: none;
+    }
+
+    /* Stage clips the peek area */
+    .slider-stage {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    /* The moving track — slides sit side by side at natural size */
+    .slider-track {
+      display: flex;
+      align-items: center;
+      transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
+    }
+
+    .slider-slide {
+      flex: 0 0 auto;
+      padding: 0 6px;
+      transition: filter 0.5s ease, opacity 0.5s ease;
+      filter: blur(3px);
+      opacity: 0.45;
+    }
+
+    .slider-slide img {
+      display: block;
+      height: 520px;
+      width: auto;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    .slider-slide.active {
+      filter: blur(0px);
+      opacity: 1;
+    }
+
+    /* Arrows — sit outside the image on each side */
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--gray-400);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .slider-arrow:hover {
+      background: var(--black);
+      border-color: var(--black);
+    }
+
+    .slider-arrow:hover svg { stroke: var(--white); }
+
+    .slider-arrow svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--black);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.2s;
+    }
+
+    .slider-arrow-left  { left: -52px; }
+    .slider-arrow-right { right: -52px; }
+
+    .slider-wrap { padding: 0 60px; }
+
+    /* Thumbnail strip */
+    .slider-thumbs {
+      display: flex;
+      gap: 5px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .slider-thumb {
+      flex: 1;
+      height: 68px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--gray-100);
+      transition: opacity 0.3s;
+      opacity: 0.4;
+    }
+
+    .slider-thumb.active {
+      opacity: 1;
+      outline: 2px solid var(--black);
+      outline-offset: -2px;
+    }
+
+    .slider-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .slider-thumb:hover { opacity: 0.75; }
+    .slider-thumb.active:hover { opacity: 1; }
+    .slider-thumb:hover img { transform: scale(1.07); }
+
+    @media (max-width: 900px) {
+      .slider-slide img { height: 320px; }
+      .slider-thumb { height: 48px; }
+      .slider-arrow { width: 34px; height: 34px; }
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--black); color: var(--white); }
+
+    #contact .section-label { color: rgba(255,255,255,0.3); }
+    #contact .section-label::after { background: rgba(255,255,255,0.1); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      color: var(--gray-200);
+    }
+
+    .contact-note {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      padding: 0.85rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--white);
+      resize: none;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(255,255,255,0.2);
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .form-submit {
+      margin-top: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--white);
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      cursor: pointer;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover { opacity: 0.85; }
+
+    .contact-links {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 0.5px solid rgba(255,255,255,0.1);
+      display: flex;
+      gap: 2rem;
+    }
+
+    .contact-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover { color: rgba(255,255,255,0.85); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 0.5px solid rgba(255,255,255,0.08);
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 55vw; order: -1; }
+      .hero-content { padding: 3rem 2rem; }
+      .bio-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .bio-portrait { position: static; aspect-ratio: 4/3; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item-1,
+      .gallery-item-2,
+      .gallery-item-3,
+      .gallery-item-4,
+      .gallery-item-5 { grid-column: span 1; aspect-ratio: 1/1; }
+      nav { padding: 1rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-name">Chia-Shuan Yeh</a>
+    <ul class="nav-links">
+      <li><a href="#biography">About</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-image">
+      <img src="hero_photo.JPEG" alt="Charlize Yeh" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Percussionist &amp; Artist</p>
+      <h1 class="hero-name">
+        Chia-Shuan<br>
+        <em>Charlize</em>
+        Yeh
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">Percussion performance at the intersection of classical artistry, scientific inquiry, and creative communication.</p>
+    </div>
+  </section>
+
+  <!-- BIOGRAPHY -->
+  <section id="biography">
+    <div class="section-inner">
+      <p class="section-label">Biography</p>
+      <div class="bio-grid">
+        <div class="bio-portrait">
+          <img src="portrait.JPG" alt="Charlize Yeh" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="bio-text">
+          <h2 class="fade-up">Artist,<br>Scholar,<br>Communicator.</h2>
+
+          <!-- REPLACE: Paste your biography paragraphs below. Remove the placeholder-text class and the italic hint. -->
+            <p class="placeholder-text fade-up delay-1">
+                Born and raised in Taipei, Taiwan, my journey with percussion began in my elementary school band program — and what started as an extracurricular activity quietly became something far more essential. I have always been a creative person: dancing, painting, making music. But percussion claimed a particular piece of me. When the time came to go abroad for college, I knew I couldn't leave it behind. It had become part of my identity — expressive, physical, alive — and so I chose to pursue it seriously, studying percussion performance alongside neuroscience at Northwestern University.
+                What draws me to percussion is, in part, its undeniable visual power. The movements of a percussionist carry meaning the way a dancer's body does — they pull an audience in, make them feel the music before they've fully heard it. I draw on my background in dance to bring nuance and intention to every gesture. When I perform, I aim to be expressive and bold, moving and present, while always staying faithful to what the composer has written. Bringing a composer's vision to life through my own interpretation is, at its heart, what performance means to me.
+            </p>
+
+            <p class="placeholder-text fade-up delay-2">
+                I am currently a student at Northwestern University's Bienen School of Music, where I major in percussion performance and neuroscience, while also pursuing a certificate in Integrated Marketing and Communications. Although neuroscience and percussion can seem like to unrelated subjects, these two fields of study inform each other more than one might expect. My deep interest in the science of learning and memory shapes how I approach the practice room — how to make repetition meaningful, how to encode music efficiently, how to learn in ways that are both durable and expressive. 
+                I am constantly exploring what it means to practice not just harder, but smarter, and bringing that curiosity to everything I study.
+            </p>
+
+            <p class="placeholder-text fade-up delay-3">
+                My percussion studies began under the guidance of Gigi Lo during my elementary school years in Taipei, and it was under her instruction that my passion for the instrument first took root. I now study with Professor She-e Wu at Northwestern University's Bienen School of Music.
+                My competitive achievements include first-place finishes at the Taipei Regional Student Music Competition in 2018, 2020, and 2022; second-place honors at the Taiwan National Student Music Competition in 2021 and 2023; and fourth place at the same competition in 2019. In 2024, at nineteen years old, I was awarded first place at the Great Plains International Marimba Competition in the open category — a division open to competitors eighteen and above — an achievement that marked a meaningful milestone in my artistic development.
+            </p>
+
+            <p class="placeholder-text fade-up delay-4">
+                Looking ahead, I hope to carry this work beyond the university and into a life devoted to performance — continuing to bring music to audiences, growing as an interpreter, and finding new ways to make percussion resonate with the world around me.
+            </p>
+
+          <div class="credentials fade-up">
+            <p class="credentials-label">Education &amp; Training</p>
+
+            <div class="credential-item">
+              Percussion Performance, B.M.
+              <span>— Bienen School of Music, Northwestern University</span>
+            </div>
+            <div class="credential-item">
+              Neuroscience, B.S.
+              <span>— Weinberg College of Arts &amp; Science, Northwestern University</span>
+            </div>
+            <div class="credential-item">
+              Integrated Marketing &amp; Communication Certificate
+              <span>— Medill School of Journalism, Northwestern University</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media">
+    <div class="section-inner">
+      <p class="section-label">Media</p>
+      <h2 class="media-intro fade-up">Performances &amp;<br>Recordings</h2>
+
+      <div class="media-grid">
+
+        <!-- VIDEO CARD 1 -->
+        <div class="media-card fade-up delay-1">
+          <div class="media-video-placeholder">
+            <iframe src="https://www.youtube.com/embed/P03C2khFl-g?si=gKJ3ak6EEYccltPa" title="Video 1" allowfullscreen></iframe>
+          </div>
+          <div class="media-card-info">
+            <p class="media-card-title">[ Performance Title ]</p>
+            <p class="media-card-meta">[ Venue / Ensemble — Year ]</p>
+          </div>
+        </div>
+
+        <!-- VIDEO CARD 2 -->
+        <div class="media-card fade-up delay-2">
+          <div class="media-video-placeholder">
+            <iframe src="https://www.youtube.com/embed/xh0J060EQHk?si=IbDY-hBP9fLEbdOm" title="Video 2" allowfullscreen></iframe>
+          </div>
+          <div class="media-card-info">
+            <p class="media-card-title">[ Performance Title ]</p>
+            <p class="media-card-meta">[ Venue / Ensemble — Year ]</p>
+          </div>
+        </div>
+
+        <!-- VIDEO CARD 3 -->
+        <div class="media-card fade-up delay-3">
+          <div class="media-video-placeholder">
+            <iframe src="https://www.youtube.com/embed/nxazLkttrqE?si=4oERV_cVVjbJvguN" title="Video 3" allowfullscreen></iframe>
+          </div>
+          <div class="media-card-info">
+            <p class="media-card-title">[ Performance Title ]</p>
+            <p class="media-card-meta">[ Venue / Ensemble — Year ]</p>
+          </div>
+        </div>
+
+        <!-- VIDEO CARD 4 -->
+        <div class="media-card fade-up delay-3">
+          <div class="media-video-placeholder">
+            <iframe src="https://www.youtube.com/embed/JhzdZbkK0So?si=TXf5U3khFRj0G7ec" title="Video 4" allowfullscreen></iframe>
+          </div>
+          <div class="media-card-info">
+            <p class="media-card-title">[ Performance Title ]</p>
+            <p class="media-card-meta">[ Venue / Ensemble — Year ]</p>
+          </div>
+        </div>
+
+
+
+        <!-- VIDEO CARD 5 -->
+        <div class="media-card fade-up delay-3">
+          <div class="media-video-placeholder">
+            <iframe src="https://www.youtube.com/embed/mJ02eppS5ig?si=TWPeOPGxFVqOnkDS" title="Video 5" allowfullscreen></iframe>
+          </div>
+          <div class="media-card-info">
+            <p class="media-card-title">[ Performance Title ]</p>
+            <p class="media-card-meta">[ Venue / Ensemble — Year ]</p>
+          </div>
+        </div>
+
+        <!-- VIDEO CARD 6 -->
+        <div class="media-card fade-up delay-3">
+          <div class="media-video-placeholder">
+            <iframe src="https://www.youtube.com/embed/-oZT3zCt1x4?si=WbruSIM2YcsVQ4ty" title="Video 6" allowfullscreen></iframe>
+          </div>
+          <div class="media-card-info">
+            <p class="media-card-title">[ Performance Title ]</p>
+            <p class="media-card-meta">[ Venue / Ensemble — Year ]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-inner">
+      <p class="section-label">Gallery</p>
+      <h2 class="gallery-heading fade-up">Photography</h2>
+
+      <div class="slider-wrap fade-up">
+
+        <!-- Arrows sit outside the stage -->
+        <button class="slider-arrow slider-arrow-left" id="arrowLeft" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-arrow slider-arrow-right" id="arrowRight" aria-label="Next photo">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+
+        <!-- Main Stage -->
+        <div class="slider-stage" id="sliderStage">
+          <div class="slider-track" id="sliderTrack">
+            <div class="slider-slide active"><img src="A7S00806.JPEG"                        alt="Charlize Yeh performing" /></div>
+            <div class="slider-slide"><img src="20250627-157.JPEG"                           alt="Charlize Yeh performing" /></div>
+            <div class="slider-slide"><img src="A7S00847.JPEG"                               alt="Charlize Yeh on stage" /></div>
+            <div class="slider-slide"><img src="20250627-228.JPEG"                           alt="Charlize Yeh on stage" /></div>
+            <div class="slider-slide"><img src="20250627-18.JPEG"                            alt="Charlize Yeh backstage" /></div>
+            <div class="slider-slide"><img src="A7S00676.JPEG"                               alt="Charlize Yeh performing" /></div>
+            <div class="slider-slide"><img src="DSC_9465.JPEG"                               alt="Charlize Yeh performing" /></div>
+            <div class="slider-slide"><img src="F76766AF-4363-4080-8202-ECA821FCA30F.JPG"    alt="Charlize Yeh at competition" /></div>
+            <div class="slider-slide"><img src="IMG_1879.JPG"                                alt="Charlize Yeh after performance" /></div>
+            <div class="slider-slide"><img src="20250627-156.JPEG"                           alt="Charlize Yeh performing" /></div>
+          </div>
+        </div>
+
+        <!-- Thumbnail Strip -->
+        <div class="slider-thumbs" id="sliderThumbs">
+          <div class="slider-thumb active"><img src="A7S00806.JPEG"                        alt="" /></div>
+          <div class="slider-thumb"><img src="20250627-157.JPEG"                           alt="" /></div>
+          <div class="slider-thumb"><img src="A7S00847.JPEG"                               alt="" /></div>
+          <div class="slider-thumb"><img src="20250627-228.JPEG"                           alt="" /></div>
+          <div class="slider-thumb"><img src="20250627-18.JPEG"                            alt="" /></div>
+          <div class="slider-thumb"><img src="A7S00676.JPEG"                               alt="" /></div>
+          <div class="slider-thumb"><img src="DSC_9465.JPEG"                               alt="" /></div>
+          <div class="slider-thumb"><img src="F76766AF-4363-4080-8202-ECA821FCA30F.JPG"   alt="" /></div>
+          <div class="slider-thumb"><img src="IMG_1879.JPG"                                alt="" /></div>
+          <div class="slider-thumb"><img src="20250627-156.JPEG"                           alt="" /></div>
+        </div>
+
+      </div>
+
+      <script>
+        (function() {
+          const stage  = document.getElementById('sliderStage');
+          const track  = document.getElementById('sliderTrack');
+          const slides = Array.from(track.querySelectorAll('.slider-slide'));
+          const thumbs = Array.from(document.getElementById('sliderThumbs').querySelectorAll('.slider-thumb'));
+          let current  = 0;
+          let autoTimer = null;
+
+          // Wait for images to load so we know real widths
+          function centerActive() {
+            const stageW  = stage.offsetWidth;
+            const activeEl = slides[current];
+            // offsetLeft of slide + half its width → center of active slide
+            const slideCenter = activeEl.offsetLeft + activeEl.offsetWidth / 2;
+            const offset = slideCenter - stageW / 2;
+            track.style.transform = `translateX(${-offset}px)`;
+
+            // Set stage height to match tallest rendered img
+            const imgs = track.querySelectorAll('img');
+            let maxH = 0;
+            imgs.forEach(img => { if (img.offsetHeight > maxH) maxH = img.offsetHeight; });
+            if (maxH > 0) stage.style.height = maxH + 'px';
+          }
+
+          function goTo(idx) {
+            slides[current].classList.remove('active');
+            thumbs[current].classList.remove('active');
+            current = (idx + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            thumbs[current].classList.add('active');
+            centerActive();
+          }
+
+          function resetTimer() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(() => goTo(current + 1), 3000);
+          }
+
+          document.getElementById('arrowLeft').addEventListener('click',  () => { goTo(current - 1); resetTimer(); });
+          document.getElementById('arrowRight').addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+          thumbs.forEach((th, i) => th.addEventListener('click', () => { goTo(i); resetTimer(); }));
+
+          // Init after images load
+          let loaded = 0;
+          const allImgs = track.querySelectorAll('img');
+          function onLoad() { loaded++; if (loaded >= allImgs.length) { centerActive(); resetTimer(); } }
+          allImgs.forEach(img => {
+            if (img.complete) onLoad();
+            else img.addEventListener('load', onLoad);
+          });
+
+          // Fallback if some images never fire load
+          setTimeout(() => { centerActive(); resetTimer(); }, 800);
+
+          window.addEventListener('resize', centerActive);
+        })();
+      </script>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Contact</p>
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-heading fade-up">Let's<br><em>Connect.</em></h2>
+          <p class="contact-note fade-up delay-1">
+            For performance inquiries, collaborations, press requests, or general correspondence, please reach out using the form or through the links below.
+          </p>
+          <div class="contact-links fade-up delay-2">
+            <a href="mailto:chiashuanyeh@gmail.com">Email</a>
+            <a href="https://instagram.com/chiashuan.yeh" target="_blank">Instagram</a>
+            <a href="https://linkedin.com/in/chia-shuan-yeh-2189662b6" target="_blank">LinkedIn</a>
+            <a href="https://www.youtube.com/@chiashuan_yeh" target="_blank">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Chia-Shuan (Charlize) Yeh</span>
+    <span class="footer-copy">&copy; <span id="year"></span> · All rights reserved</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
